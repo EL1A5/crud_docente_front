@@ -4,6 +4,7 @@ import { Ubigeo } from 'src/app/models/ubigeo.model';
 import { DocenteService } from 'src/app/services/docente.service';
 import { UbigeoService } from 'src/app/services/ubigeo.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-crud-docente',
@@ -108,10 +109,12 @@ export class CrudDocenteComponent implements OnInit {
 
         this.docenteService.registraDocente(this.docente).subscribe(
               (x) => {
-                alert(x.mensaje);
+                document.getElementById("btn_reg_cerrar")?.click();
+                Swal.fire('Mensaje', x.mensaje,'success');
                 this.docenteService.listaDocente(this.filtro==""?"todos":this.filtro).subscribe(
                         (x) => this.docentes = x
                 );
+
               } 
         );
 
@@ -161,7 +164,8 @@ export class CrudDocenteComponent implements OnInit {
 
     this.docenteService.actualizaDocente(this.docente).subscribe(
           (x) => {
-            alert(x.mensaje);
+            document.getElementById("btn_act_cerrar")?.click();
+            Swal.fire('Mensaje', x.mensaje,'success');
             this.docenteService.listaDocente(this.filtro==""?"todos":this.filtro).subscribe(
                     (x) => this.docentes = x
             );
@@ -187,6 +191,33 @@ export class CrudDocenteComponent implements OnInit {
           }
     }
 }
+
+
+
+elimina(aux :Docente){
+      Swal.fire({
+            title: '¿Estás Seguro?',
+            text: "¡No se puede revertir!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, Elimínalo'
+      }).then((result) => {
+          if (result.isConfirmed) {
+                this.docenteService.eliminaDocente(aux.idDocente).subscribe(
+                  (x) => {
+                    Swal.fire('Mensaje',x.mensaje, 'success');
+                    this.docenteService.listaDocente(this.filtro==""?"todos":this.filtro).subscribe(
+                            (x) => this.docentes = x
+                    );
+           
+                  } 
+                );
+          }
+      })
+}
+
 
 
 }
