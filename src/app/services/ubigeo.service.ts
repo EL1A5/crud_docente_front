@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ubigeo } from '../models/ubigeo.model';
 
-const baseUrl = 'http://localhost:8090/rest/util';
+const baseUrl = 'https://sistema-dawii-jacinto.herokuapp.com/util';
+//const baseUrl = 'http://localhost:8090/rest/util';
 
 @Injectable({
   providedIn: 'root'
