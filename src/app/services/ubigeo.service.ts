@@ -2,26 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ubigeo } from '../models/ubigeo.model';
+import { environment } from 'src/environments/environment';
 
-const baseUrl = 'https://sistema-dawii-jacinto.herokuapp.com/util';
-//const baseUrl = 'http://localhost:8090/rest/util';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UbigeoService {
+
+  private apiServerURL = environment.apiBaseURL;
+
   constructor(private http: HttpClient) {}
 
   listarDepartamento(): Observable<string[]> {
-    return this.http.get<string[]>(baseUrl + '/listaDepartamentos');
+    return this.http.get<string[]>('${this.apiServerURL}/util/listaDepartamentos');
   }
 
   listaProvincias(paramDep: any): Observable<string[]> {
-    return this.http.get<string[]>(baseUrl + '/listaProvincias/' + paramDep);
+    return this.http.get<string[]>('${this.apiServerURL}/util/listaProvincias/' + paramDep);
   }
 
   listaDistritos(paramDep: any, paramProv: any): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(baseUrl + '/listaDistritos/' + paramDep + '/' + paramProv);
+    return this.http.get<Ubigeo[]>('${this.apiServerURL}/util/listaDistritos/' + paramDep + '/' + paramProv);
   }
 }
