@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseURL: 'https://sistema-dawii-jacinto.herokuapp.com'
+  apiBaseURL: 'https://dawii-backend-jacinto-2.herokuapp.com'
 };

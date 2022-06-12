@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Semana03": {
+    "dawii-sesion11frontendfinalizado": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Semana03",
+            "outputPath": "dist/dawii-sesion11frontendfinalizado",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Semana03:build:production"
+              "browserTarget": "dawii-sesion11frontendfinalizado:build:production"
             },
             "development": {
-              "browserTarget": "Semana03:build:development"
+              "browserTarget": "dawii-sesion11frontendfinalizado:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Semana03:build"
+            "browserTarget": "dawii-sesion11frontendfinalizado:build"
           }
         },
         "test": {
@@ -102,5 +102,5 @@
       }
     }
   },
-  "defaultProject": "Semana03"
+  "defaultProject": "dawii-sesion11frontendfinalizado"
 }
